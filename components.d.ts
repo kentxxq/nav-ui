@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Avatar: typeof import('primevue/avatar')['default']
+    Badge: typeof import('primevue/badge')['default']
     Button: typeof import('primevue/button')['default']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
     ICarbonAccessibility: typeof import('~icons/carbon/accessibility')['default']
@@ -26,6 +27,10 @@ declare module 'vue' {
     IEmojioneMonotoneLetterN: typeof import('~icons/emojione-monotone/letter-n')['default']
     IEmojioneMonotoneLetterX: typeof import('~icons/emojione-monotone/letter-x')['default']
     IMdiAccountBox: typeof import('~icons/mdi/account-box')['default']
+    IMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
+    IMdiFile: typeof import('~icons/mdi/file')['default']
+    IMdiFolder: typeof import('~icons/mdi/folder')['default']
+    IMdiHot: typeof import('~icons/mdi/hot')['default']
     InputText: typeof import('primevue/inputtext')['default']
     ISimpleIconsTelegram: typeof import('~icons/simple-icons/telegram')['default']
     Layouts: typeof import('./src/components/layouts/index.vue')['default']
@@ -34,5 +39,8 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
+  }
+  export interface ComponentCustomProperties {
+    Ripple: typeof import('primevue/ripple')['default']
   }
 }
