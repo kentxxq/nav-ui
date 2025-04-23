@@ -27,6 +27,7 @@ declare module 'vue' {
     IEmojioneMonotoneLetterX: typeof import('~icons/emojione-monotone/letter-x')['default']
     IMdiAccountBox: typeof import('~icons/mdi/account-box')['default']
     InputText: typeof import('primevue/inputtext')['default']
+    ISimpleIconsTelegram: typeof import('~icons/simple-icons/telegram')['default']
     Layouts: typeof import('./src/components/layouts/index.vue')['default']
     Menubar: typeof import('primevue/menubar')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
