@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import Components from 'unplugin-vue-components/vite'
 import { PrimeVueResolver } from '@primevue/auto-import-resolver'
 import tailwindcss from '@tailwindcss/vite'
-
+import Icons from 'unplugin-icons/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -24,8 +24,13 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
+    Icons({
+      /* options */
+    }),
     Components({
-      resolvers: [PrimeVueResolver()],
+      resolvers: [
+        PrimeVueResolver()
+      ],
     }),
   ],
   resolve: {

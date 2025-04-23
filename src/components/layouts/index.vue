@@ -15,6 +15,8 @@
       </template>
     </Menubar>
 
+    <icon-account-box class=" text-red-400 text-2xl" />
+
 
     <RouterView />
   </div>
@@ -24,6 +26,8 @@
 defineOptions({
   name: 'layout-index'
 })
+
+import IconAccountBox from '~icons/mdi/account-box'
 
 const items = [
   {
