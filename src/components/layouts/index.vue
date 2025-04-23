@@ -3,10 +3,7 @@
   <div class="h-screen w-screen flex flex-col">
     <Menubar class="px-14 h-14 border-0" :model="items">
       <template #start>
-        <svg width="35" height="40" viewBox="0 0 35 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8">
-          <path d="..." fill="var(--p-primary-color)" />
-          <path d="..." fill="var(--p-text-color)" />
-        </svg>
+        <i-emojione-monotone-letter-n class=" text-4xl text-teal-400" />
       </template>
       <template #end>
         <div class="flex items-center gap-2">
@@ -14,9 +11,6 @@
         </div>
       </template>
     </Menubar>
-
-    <i-mdi-account-box class=" text-red-400 text-2xl" />
-    <i-carbon-accessibility class="text-green-200 text-3xl" />
 
     <RouterView />
   </div>
