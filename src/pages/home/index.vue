@@ -1,7 +1,6 @@
 <template>
   <div>
-    <PanelMenu :model="menuItems" class="w-80" multiple v-model:expandedKeys="expandedKeys"
-      @panel-open.prevent="() => { console.log('lanjie') }">
+    <PanelMenu :model="menuItems" class="w-80" multiple v-model:expandedKeys="expandedKeys">
       <template #item="{ item, active }">
         <div @click.prevent="" v-ripple class="flex items-center justify-between px-4 py-2"
           :class="{ 'p-menu-item-active': active }">
