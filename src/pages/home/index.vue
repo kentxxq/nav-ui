@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex">
     <Tree :value="nodes" class="w-80 border-r" style="border-color: var(--p-content-border-color);"
       selectionMode="single" v-model:selectionKeys="selectedKey">
       <template #nodeicon="{ node }">
@@ -8,6 +8,17 @@
         <i-mdi-star v-else class="text-2xl" style="color: var(--p-primary-color);" />
       </template>
     </Tree>
+
+    <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-4">
+      <a v-for="bookmark in bookmarks" :key="bookmark.id" :href="bookmark.url" target="_blank"
+        class="flex w-60 h-20 shadow-xl rounded-lg inset-shadow-2xs items-center p-2 gap-4">
+        <img :src="bookmark.icon" alt="" class="size-10" />
+        <div class="flex flex-col">
+          <p>{{ bookmark.title }}</p>
+          <p class="text-xs" style="color: var(--p-text-muted-color);">这是一段注释</p>
+        </div>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -53,6 +64,40 @@ const userNodes = ref<TreeNode[]>([{
     }]
   }]
 },]);
+
+
+
+const bookmarks = ref([{
+  id: 1,
+  icon: "https://www.baidu.com/favicon.ico",
+  title: "uni",
+  url: "https://uni.kentxxq.com"
+}, {
+  id: 2,
+  icon: "https://www.baidu.com/favicon.ico",
+  title: "百度",
+  url: "https://www.baidu.com"
+}, {
+  id: 2,
+  icon: "https://www.baidu.com/favicon.ico",
+  title: "百度",
+  url: "https://www.baidu.com"
+}, {
+  id: 3,
+  icon: "https://www.baidu.com/favicon.ico",
+  title: "百度",
+  url: "https://www.baidu.com"
+}, {
+  id: 4,
+  icon: "https://www.baidu.com/favicon.ico",
+  title: "百度",
+  url: "https://www.baidu.com"
+}, {
+  id: 5,
+  icon: "https://www.baidu.com/favicon.ico",
+  title: "百度",
+  url: "https://www.baidu.com"
+}])
 
 </script>
 
