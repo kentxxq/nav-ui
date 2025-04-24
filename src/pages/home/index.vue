@@ -1,8 +1,9 @@
 <template>
   <div>
-    <PanelMenu :model="menuItems" class="w-80" multiple v-model:expandedKeys="expandedKeys">
+    <PanelMenu :model="menuItems" class="w-80" multiple v-model:expandedKeys="expandedKeys"
+      @panel-open="() => { console.log(1) }">
       <template #item="{ item, active }">
-        <div @click.prevent="" v-ripple class="flex items-center justify-between px-4 py-2"
+        <div v-ripple class="flex items-center justify-between px-4 py-2 cursor-pointer "
           :class="{ 'p-menu-item-active': active }">
           <div class="flex gap-2">
             <template v-if="item.icon == 'hot'">
@@ -17,7 +18,6 @@
 
             <span>{{ item.label }}</span>
           </div>
-
 
           <div>
             <i-mdi-arrow-down v-if="item.items" @click.stop="toggleItem(item.key)" class="text-xl"
