@@ -29,6 +29,7 @@ declare module 'vue' {
     IMdiAccountBox: typeof import('~icons/mdi/account-box')['default']
     IMdiArrowDown: typeof import('~icons/mdi/arrow-down')['default']
     IMdiFile: typeof import('~icons/mdi/file')['default']
+    IMdiFire: typeof import('~icons/mdi/fire')['default']
     IMdiFolder: typeof import('~icons/mdi/folder')['default']
     IMdiHot: typeof import('~icons/mdi/hot')['default']
     IMdiLeadPencil: typeof import('~icons/mdi/lead-pencil')['default']
