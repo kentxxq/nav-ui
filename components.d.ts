@@ -31,6 +31,8 @@ declare module 'vue' {
     IMdiFile: typeof import('~icons/mdi/file')['default']
     IMdiFolder: typeof import('~icons/mdi/folder')['default']
     IMdiHot: typeof import('~icons/mdi/hot')['default']
+    IMdiLeadPencil: typeof import('~icons/mdi/lead-pencil')['default']
+    IMdiStar: typeof import('~icons/mdi/star')['default']
     InputText: typeof import('primevue/inputtext')['default']
     ISimpleIconsTelegram: typeof import('~icons/simple-icons/telegram')['default']
     Layouts: typeof import('./src/components/layouts/index.vue')['default']
@@ -38,6 +40,7 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    Tree: typeof import('primevue/tree')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
   export interface ComponentCustomProperties {
