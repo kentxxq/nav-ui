@@ -1,22 +1,21 @@
 <template>
   <div class="flex">
-    <Tree :value="nodes" class="w-80 border-r" style="border-color: var(--p-content-border-color);"
-      selectionMode="single" v-model:selectionKeys="selectedKey">
+    <Tree :value="nodes" class="w-80 border-r border-(--p-content-border-color)" selectionMode="single"
+      v-model:selectionKeys="selectedKey">
       <template #nodeicon="{ node }">
         <i-mdi-fire v-if="node.key === 'hot'" class="text-2xl text-red-500" />
         <i-mdi-folder v-else-if="node.children" class="text-2xl text-yellow-500" />
-        <i-mdi-star v-else class="text-2xl" style="color: var(--p-primary-color);" />
+        <i-mdi-star v-else class="text-2xl text-(--p-primary-color)" />
       </template>
     </Tree>
 
     <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-6">
       <a v-for="bookmark in bookmarks" :key="bookmark.id" :href="bookmark.url" target="_blank"
-        style="border-color: var(--p-content-border-color);"
-        class=" flex w-60 h-20 rounded-lg shadow-md border items-center px-4 gap-4 transition hover:-translate-y-1 hover:shadow-xl">
+        class=" flex w-60 h-20 border-(--p-content-border-color) rounded-lg shadow-md border items-center px-4 gap-4 transition hover:-translate-y-1 hover:shadow-xl">
         <img :src="bookmark.icon" alt="" class="size-10" />
         <div class="flex flex-col gap-1">
           <p class="font-semibold">{{ bookmark.title }}</p>
-          <p class="text-xs" style="color: var(--p-text-muted-color);">这是一段注释</p>
+          <p class="text-xs text-(--p-text-muted-color)">这是一段注释</p>
         </div>
       </a>
     </div>
