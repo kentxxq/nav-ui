@@ -1,7 +1,7 @@
 <template>
   <!-- 全屏 -->
   <div class="h-screen w-screen flex flex-col">
-    <Menubar class="px-14 h-14 border-0 border-b">
+    <Menubar class="px-14 h-14 border-0 shadow-sm">
       <template #start>
         <div class="flex items-center justify-center gap-2">
           <i-emojione-monotone-letter-n class=" text-4xl" style="color:var(--p-primary-color)" />
