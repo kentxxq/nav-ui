@@ -9,8 +9,6 @@ pinia.use(
   }),
 )
 
-// export * from './modules/user'
-// export * from './modules/permission'
-// export * from './modules/theme'
+export * from './modules/user'
 
 export default pinia

@@ -25,7 +25,8 @@
             $form.email.error?.message }}</Message>
         </div>
         <div class="flex flex-col gap-1">
-          <InputText name="password" type="text" placeholder="Password" />
+          <Password :inputProps="{ autocomplete: 'true' }" name="password" placeholder="Password" :feedback="false"
+            fluid />
           <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{
             $form.password.error?.message }}</Message>
         </div>
@@ -54,17 +55,22 @@ const loginVisible = ref(false)
 const openLogin = () => {
   loginVisible.value = true
 }
+
 import { zodResolver } from '@primevue/forms/resolvers/zod';
 import { z } from 'zod';
-const resolver = ref(zodResolver(
-  z.object({
-    email: z.string().min(1, { message: 'Email is required.' }).email({ message: 'Invalid email address.' }),
-    password: z.string().min(6)
-  })
-));
+const resolver = ref(zodResolver(z.object({
+  email: z.string().min(1, { message: 'Email is required.' }).email({ message: 'Invalid email address.' }),
+  password: z.string().min(6)
+})));
 
-const onFormSubmit = () => {
-  console.log('submit')
+import { type FormSubmitEvent } from '@primevue/forms';
+import { userLoginApi } from "@/api/user";
+const onFormSubmit = async (e: FormSubmitEvent) => {
+  if (e.valid) {
+    console.log(e)
+    await userLoginApi({ username: e.values.email, password: e.values.password })
+    console.log('submit')
+  }
 }
 
 </script>

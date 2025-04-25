@@ -42,9 +42,11 @@ declare module 'vue' {
     Login: typeof import('./src/components/layouts/login.vue')['default']
     Menubar: typeof import('primevue/menubar')['default']
     Message: typeof import('primevue/message')['default']
+    Password: typeof import('primevue/password')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     TheWelcome: typeof import('./src/components/TheWelcome.vue')['default']
+    Toast: typeof import('primevue/toast')['default']
     Tree: typeof import('primevue/tree')['default']
     WelcomeItem: typeof import('./src/components/WelcomeItem.vue')['default']
   }
