@@ -9,12 +9,13 @@
       </template>
     </Tree>
 
-    <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-4">
+    <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-6">
       <a v-for="bookmark in bookmarks" :key="bookmark.id" :href="bookmark.url" target="_blank"
-        class="flex w-60 h-20 shadow-xl rounded-lg inset-shadow-2xs items-center p-2 gap-4">
+        style="border-color: var(--p-content-border-color);"
+        class=" flex w-60 h-20 rounded-lg shadow-md border items-center px-4 gap-4 transition hover:-translate-y-1 hover:shadow-xl">
         <img :src="bookmark.icon" alt="" class="size-10" />
-        <div class="flex flex-col">
-          <p>{{ bookmark.title }}</p>
+        <div class="flex flex-col gap-1">
+          <p class="font-semibold">{{ bookmark.title }}</p>
           <p class="text-xs" style="color: var(--p-text-muted-color);">这是一段注释</p>
         </div>
       </a>
