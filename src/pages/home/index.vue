@@ -10,14 +10,7 @@
     </Tree>
 
     <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-6">
-      <a v-for="bookmark in bookmarks" :key="bookmark.id" :href="bookmark.url" target="_blank"
-        class=" flex w-60 h-20 border-(--p-content-border-color) rounded-lg shadow-md border items-center px-4 gap-4 transition hover:-translate-y-1 hover:shadow-xl">
-        <img :src="bookmark.icon" alt="" class="size-10" />
-        <div class="flex flex-col gap-1">
-          <p class="font-semibold">{{ bookmark.title }}</p>
-          <p class="text-xs text-(--p-text-muted-color)">这是一段注释</p>
-        </div>
-      </a>
+      <bookmark-card v-for="bookmark in bookmarks" :key="bookmark.id" :bookmark="bookmark" />
     </div>
   </div>
 </template>
@@ -29,6 +22,7 @@ defineOptions({
 
 import { computed, ref } from "vue";
 import type { TreeNode } from "primevue/treenode";
+import bookmarkCard from "./bookmark-card.vue";
 const selectedKey = ref();
 
 const nodes = computed(() => {
@@ -67,7 +61,7 @@ const userNodes = ref<TreeNode[]>([{
 
 
 
-const bookmarks = ref([{
+const bookmarks = ref<Bookmark[]>([{
   id: 1,
   icon: "https://www.baidu.com/favicon.ico",
   title: "uni",
