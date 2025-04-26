@@ -9,7 +9,7 @@
       </template>
     </Tree>
 
-    <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-6">
+    <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-12">
       <bookmark-card v-for="bookmark in bookmarks" :key="bookmark.id" :bookmark="bookmark" />
     </div>
   </div>
