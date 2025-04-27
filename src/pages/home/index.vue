@@ -3,9 +3,9 @@
     <Tree :value="nodes" class="w-80 border-r border-(--p-content-border-color)" selectionMode="single"
       v-model:selectionKeys="selectedKey">
       <template #nodeicon="{ node }">
-        <i-mdi-fire v-if="node.key === 'hot'" class="text-2xl text-red-500" />
-        <i-mdi-folder v-else-if="node.children" class="text-2xl text-yellow-500" />
-        <i-mdi-star v-else class="text-2xl text-(--p-primary-color)" />
+        <i-mdi-fire v-if="node.key === 'hot'" class="size-6 text-red-500" />
+        <i-mdi-folder v-else-if="node.children" class="size-6 text-yellow-500" />
+        <i-mdi-star v-else class="size-6 text-(--p-primary-color)" />
       </template>
     </Tree>
 
