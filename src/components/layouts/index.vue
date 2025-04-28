@@ -11,7 +11,7 @@
       <template #end>
         <div class="flex items-center gap-4">
           <a href="https://t.me/kentxxqdev/79" target="_blank"><i-simple-icons-telegram
-              class="size-6 text-(--p-primary-color)" /></a>
+              class="size-8 text-(--p-primary-color)" /></a>
 
           <Button v-if="!userStore.isTokenValid" label="登录" @click="openLogin" size="small" />
           <div v-else class="flex justify-center">
