@@ -23,6 +23,7 @@ defineOptions({
 import { computed, ref } from "vue";
 import type { TreeNode } from "primevue/treenode";
 import bookmarkCard from "./bookmark-card.vue";
+import type { Bookmark } from "@/types/nav/bookmark";
 const selectedKey = ref();
 
 const nodes = computed(() => {

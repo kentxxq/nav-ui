@@ -13,11 +13,11 @@
           <a href="https://t.me/kentxxqdev/79" target="_blank"><i-simple-icons-telegram
               class="size-8 text-(--p-primary-color)" /></a>
 
-          <Button v-if="!userStore.isTokenValid" label="登录" @click="openLogin" size="small" />
+          <Button v-if="!isTokenValid" label="登录" @click="openLogin" size="small" />
           <div v-else class="flex justify-center">
-            <Avatar :label="userStore.name" shape="circle" size="normal">
+            <Avatar shape="circle" size="normal">
               <template #default>
-                <img :src="userStore.avatar" @click="toggle" @mouseenter="toggle" alt="avatar" />
+                <img :src="avatar" @click="toggle" @mouseenter="toggle" alt="avatar" />
               </template>
             </Avatar>
             <Menu ref="menu" id="overlay_menu" :model="userItems" :popup="true" class="w-2" />
@@ -28,7 +28,7 @@
     </Menubar>
 
     <LoginDialog v-model:loginVisible="loginVisible" />
-
+    <ChangePassword v-model:changePasswordVisible="changePasswordVisible" />
     <div class="px-20 pt-4">
       <RouterView />
     </div>
@@ -43,20 +43,27 @@ defineOptions({
 })
 
 import LoginDialog from "./login-dialog.vue";
+import ChangePassword from "./change-password.vue";
 import { useUserStore } from '@/stores';
+import { storeToRefs } from 'pinia';
 
 // login
 const userStore = useUserStore()
+const { isTokenValid, avatar } = storeToRefs(userStore)
 const loginVisible = ref(false)
 const openLogin = () => {
   loginVisible.value = true
 }
 
 // user
+const changePasswordVisible = ref(false)
 const userItems = ref([
-  // {
-  //   label: '修改密码',
-  // },
+  {
+    label: '修改密码',
+    command: () => {
+      changePasswordVisible.value = true
+    }
+  },
   {
     label: '退出',
     command: () => {
@@ -65,7 +72,7 @@ const userItems = ref([
   }
 ]);
 const menu = ref();
-const toggle = (event) => {
+const toggle = (event: Event) => {
   menu.value.toggle(event);
 };
 

@@ -1,5 +1,10 @@
 import { defineStore } from 'pinia'
-import { userLoginApi, userRefreshTokenApi } from '@/api/user'
+import {
+  userGetPasswordApi,
+  userLoginApi,
+  userRefreshTokenApi,
+  userUpdatePasswordApi,
+} from '@/api/user'
 import type { JwtStruct } from '@/types/nav/common'
 import { jwtDecode } from 'jwt-decode'
 import type { LoginRO } from '@/types/nav/user'
@@ -43,6 +48,14 @@ export const useUserStore = defineStore('user', {
     },
   },
   actions: {
+    async userGetPassword(username: string) {
+      const result = await userGetPasswordApi(username)
+      return result
+    },
+    async userUpdatePassword(oldPassword: string, newPassword: string) {
+      const result = await userUpdatePasswordApi({ oldPassword, newPassword })
+      return result
+    },
     async userLogin(loginRO: LoginRO): Promise<boolean> {
       const result = await userLoginApi(loginRO)
       // 存储必要状态
