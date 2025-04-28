@@ -14,7 +14,15 @@
               class="size-6 text-(--p-primary-color)" /></a>
 
           <Button v-if="!userStore.isTokenValid" label="登录" @click="openLogin" size="small" />
-          <Avatar v-else :label="userStore.name" size="xlarge" />
+          <div v-else class="flex justify-center">
+            <Avatar :label="userStore.name" shape="circle" size="normal">
+              <template #default>
+                <img :src="userStore.avatar" @click="toggle" @mouseenter="toggle" alt="avatar" />
+              </template>
+            </Avatar>
+            <Menu ref="menu" id="overlay_menu" :model="userItems" :popup="true" class="w-2" />
+          </div>
+
         </div>
       </template>
     </Menubar>
@@ -44,7 +52,22 @@ const openLogin = () => {
   loginVisible.value = true
 }
 
-
+// user
+const userItems = ref([
+  // {
+  //   label: '修改密码',
+  // },
+  {
+    label: '退出',
+    command: () => {
+      userStore.logout()
+    }
+  }
+]);
+const menu = ref();
+const toggle = (event) => {
+  menu.value.toggle(event);
+};
 
 </script>
 

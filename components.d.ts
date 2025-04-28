@@ -46,6 +46,7 @@ declare module 'vue' {
     Layouts: typeof import('./src/components/layouts/index.vue')['default']
     Login: typeof import('./src/components/layouts/login.vue')['default']
     LoginDialog: typeof import('./src/components/layouts/login-dialog.vue')['default']
+    Menu: typeof import('primevue/menu')['default']
     Menubar: typeof import('primevue/menubar')['default']
     Message: typeof import('primevue/message')['default']
     Password: typeof import('primevue/password')['default']

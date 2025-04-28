@@ -3,6 +3,7 @@ import { userLoginApi, userRefreshTokenApi } from '@/api/user'
 import type { JwtStruct } from '@/types/nav/common'
 import { jwtDecode } from 'jwt-decode'
 import type { LoginRO } from '@/types/nav/user'
+import getDicebearAvatar from '@/utils/avatar'
 
 export interface UserInfo {
   id: number
@@ -36,6 +37,9 @@ export const useUserStore = defineStore('user', {
       } catch {
         return false
       }
+    },
+    avatar(state): string {
+      return getDicebearAvatar(state.name)
     },
   },
   actions: {
@@ -77,7 +81,7 @@ export const useUserStore = defineStore('user', {
       this.roles = []
       this.name = ''
     },
-    loginOut() {
+    logout() {
       this.resetUser()
     },
   },

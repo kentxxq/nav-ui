@@ -23,7 +23,7 @@ axiosInstance.interceptors.request.use((config) => {
   } else {
     // token无效:注销用户,返回登录页
     console.debug('request拦截器-token过期')
-    userStore.loginOut()
+    userStore.logout()
     router.push('/login')
     return config
   }
@@ -36,7 +36,7 @@ axiosInstance.interceptors.response.use(
       if (response.data.data === 401) {
         myToast.error('token 失效，请重新登录')
         const userStore = useUserStore()
-        userStore.loginOut()
+        userStore.logout()
         router.push('/login')
         return
       }
