@@ -12,27 +12,14 @@
         <div class="flex items-center gap-4">
           <a href="https://t.me/kentxxqdev/79" target="_blank"><i-simple-icons-telegram
               class="size-6 text-(--p-primary-color)" /></a>
-          <Button label="登录" @click="openLogin" size="small" />
+
+          <Button v-if="!userStore.isTokenValid" label="登录" @click="openLogin" size="small" />
+          <Avatar v-else :label="userStore.name" size="xlarge" />
         </div>
       </template>
     </Menubar>
 
-    <Dialog v-model:visible="loginVisible" modal header="登录" :style="{ width: '25rem' }" :dismissableMask="true">
-      <Form v-slot="$form" :resolver="resolver" @submit="onFormSubmit" class="flex justify-center flex-col gap-4">
-        <div class="flex flex-col gap-1">
-          <InputText name="email" type="text" placeholder="Email" />
-          <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
-            $form.email.error?.message }}</Message>
-        </div>
-        <div class="flex flex-col gap-1">
-          <Password :inputProps="{ autocomplete: 'true' }" name="password" placeholder="Password" :feedback="false"
-            fluid />
-          <Message v-if="$form.password?.invalid" severity="error" size="small" variant="simple">{{
-            $form.password.error?.message }}</Message>
-        </div>
-        <Button type="submit" severity="secondary" label="登录" />
-      </Form>
-    </Dialog>
+    <LoginDialog v-model:loginVisible="loginVisible" />
 
     <div class="px-20 pt-4">
       <RouterView />
@@ -47,31 +34,17 @@ defineOptions({
   name: 'layout-index'
 })
 
-
-
+import LoginDialog from "./login-dialog.vue";
+import { useUserStore } from '@/stores';
 
 // login
+const userStore = useUserStore()
 const loginVisible = ref(false)
 const openLogin = () => {
   loginVisible.value = true
 }
 
-import { zodResolver } from '@primevue/forms/resolvers/zod';
-import { z } from 'zod';
-const resolver = ref(zodResolver(z.object({
-  email: z.string().min(1, { message: 'Email is required.' }).email({ message: 'Invalid email address.' }),
-  password: z.string().min(6)
-})));
 
-import { type FormSubmitEvent } from '@primevue/forms';
-import { userLoginApi } from "@/api/user";
-const onFormSubmit = async (e: FormSubmitEvent) => {
-  if (e.valid) {
-    console.log(e)
-    await userLoginApi({ username: e.values.email, password: e.values.password })
-    console.log('submit')
-  }
-}
 
 </script>
 

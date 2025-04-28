@@ -6,11 +6,12 @@ import type { LoginRO } from '@/types/nav/user'
 
 export interface UserInfo {
   id: number
+  name: string
   token: string
   roles: Array<string>
 }
 
-const state: UserInfo = { id: 0, token: '', roles: [] }
+const state: UserInfo = { id: 0, name: '', token: '', roles: [] }
 
 export const useUserStore = defineStore('user', {
   state: () => state,
@@ -43,8 +44,7 @@ export const useUserStore = defineStore('user', {
       // 存储必要状态
       this.token = result.token
       const jwt = jwtDecode<JwtStruct>(result.token)
-      this.id = jwt.id
-      this.roles = jwt.role
+      this.loadUserInfo()
       console.debug('userLogin返回的token', jwt)
       return true
     },
@@ -53,8 +53,7 @@ export const useUserStore = defineStore('user', {
       // 存储必要状态
       this.token = result.token
       const jwt = jwtDecode<JwtStruct>(result.token)
-      this.id = jwt.id
-      this.roles = jwt.role
+      this.loadUserInfo()
       console.debug('userRefreshToken返回的token', jwt)
       return true
     },
@@ -66,10 +65,17 @@ export const useUserStore = defineStore('user', {
       // console.debug(jwt.exp * 1000, now, exp)
       return jwt.exp * 1000 - now < exp
     },
+    loadUserInfo() {
+      const jwt = jwtDecode<JwtStruct>(this.token)
+      this.id = jwt.id
+      this.name = jwt.name
+      this.roles = jwt.role
+    },
     resetUser() {
       this.id = 0
       this.token = ''
       this.roles = []
+      this.name = ''
     },
     loginOut() {
       this.resetUser()
