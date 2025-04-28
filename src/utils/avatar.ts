@@ -1,8 +1,8 @@
 import { createAvatar } from '@dicebear/core'
-import { lorelei } from '@dicebear/collection'
+import { initials } from '@dicebear/collection'
 
 const getDicebearAvatar = (username: string) => {
-  const avatar = createAvatar(lorelei, {
+  const avatar = createAvatar(initials, {
     seed: username,
   })
   return avatar.toDataUri()
