@@ -1,6 +1,15 @@
-export interface Bookmark {
+export interface BookmarkSO {
   id: number
-  icon: string
+  url: string
+  title: string
+  iconUrl: string
+  description: string | null
+  updateTime: Date
+}
+
+export interface CreateBookmarkRO {
+  iconUrl: string
   title: string
   url: string
+  description: string | null
 }

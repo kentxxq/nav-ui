@@ -1,11 +1,4 @@
-import type {
-  LoginSO,
-  LoginRO,
-  UpdatePasswordRO,
-  User,
-  CreateUserRO,
-  UpdateUserRoleRO,
-} from '@/types/nav/user'
+import type { LoginSO, LoginRO, UpdatePasswordRO } from '@/types/nav/user'
 import { HttpMethod } from '@/utils/enums'
 import { http } from '@/utils/request'
 

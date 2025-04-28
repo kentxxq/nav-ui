@@ -9,9 +9,14 @@
       </template>
     </Tree>
 
-    <div class="w-full mx-auto py-4 px-12 grid grid-cols-4 gap-12">
-      <bookmark-card v-for="bookmark in bookmarks" :key="bookmark.id" :bookmark="bookmark" />
+    <div class="flex flex-col items-center w-full x-auto py-4 px-12 gap-4">
+      <Button label="新增书签" @click="addBookmark"></Button>
+      <div class="grid grid-cols-4 gap-12">
+        <bookmark-card v-for="bookmark in userBookmarks" :key="bookmark.id" :bookmark="bookmark" />
+      </div>
     </div>
+
+    <AddBookmark v-model:addBookmarkVisible="addBookmarkVisible" />
   </div>
 </template>
 
@@ -24,6 +29,7 @@ import { computed, ref } from "vue";
 import type { TreeNode } from "primevue/treenode";
 import bookmarkCard from "./bookmark-card.vue";
 import type { Bookmark } from "@/types/nav/bookmark";
+import AddBookmark from "./add-bookmark.vue";
 const selectedKey = ref();
 
 const nodes = computed(() => {
@@ -93,6 +99,13 @@ const bookmarks = ref<Bookmark[]>([{
   title: "百度",
   url: "https://www.baidu.com"
 }])
+
+// 新增书签
+const addBookmarkVisible = ref(false)
+const userBookmarks = ref<Bookmark[]>([])
+const addBookmark = () => {
+  addBookmarkVisible.value = true
+}
 
 </script>
 

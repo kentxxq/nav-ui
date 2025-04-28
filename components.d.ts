@@ -14,6 +14,7 @@ declare module 'vue' {
     Dialog: typeof import('primevue/dialog')['default']
     FloatLabel: typeof import('primevue/floatlabel')['default']
     Form: typeof import('@primevue/forms/form')['default']
+    FormField: typeof import('@primevue/forms/formfield')['default']
     IEmojioneMonotoneLetterN: typeof import('~icons/emojione-monotone/letter-n')['default']
     IMdiContentCopy: typeof import('~icons/mdi/content-copy')['default']
     IMdiDelete: typeof import('~icons/mdi/delete')['default']
