@@ -25,11 +25,13 @@ defineOptions({
   name: 'home-index'
 })
 
-import { computed, ref } from "vue";
+import { computed, ref, watch } from "vue";
 import type { TreeNode } from "primevue/treenode";
 import bookmarkCard from "./bookmark-card.vue";
 import type { BookmarkSO } from "@/types/nav/bookmark";
 import BookmarkDialog from "./bookmark-dialog.vue";
+import { bookmarkGetUserBookmarks } from "@/api/bookmark";
+import { useUserStore } from "@/stores";
 const selectedKey = ref();
 
 const nodes = computed(() => {
@@ -106,6 +108,20 @@ const userBookmarks = ref<BookmarkSO[]>([])
 const addBookmark = () => {
   addBookmarkVisible.value = true
 }
+
+// 查询
+const getUserBookmarks = async () => {
+  userBookmarks.value = await bookmarkGetUserBookmarks();
+}
+const userStore = useUserStore()
+if (userStore.isTokenValid) {
+  getUserBookmarks()
+}
+watch(() => userStore.isTokenValid, async () => {
+  await getUserBookmarks()
+})
+
+
 
 </script>
 

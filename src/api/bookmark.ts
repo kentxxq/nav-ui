@@ -9,3 +9,10 @@ export function bookmarkCreateBookmark(createBookmarkRO: CreateBookmarkRO) {
     data: createBookmarkRO,
   })
 }
+
+export function bookmarkGetUserBookmarks() {
+  return http<BookmarkSO[]>({
+    url: '/nav/Bookmark/GetUserBookmarks',
+    method: HttpMethod.GET,
+  })
+}
