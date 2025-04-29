@@ -13,3 +13,11 @@ export interface CreateBookmarkRO {
   url: string
   description: string | null
 }
+
+export interface BookmarkRO {
+  id: number
+  iconUrl: string
+  title: string
+  url: string
+  description: string | null
+}

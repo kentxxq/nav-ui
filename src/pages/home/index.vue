@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <AddBookmark v-model:addBookmarkVisible="addBookmarkVisible" />
+    <BookmarkDialog v-model:bookmarkVisible="addBookmarkVisible" :dialogHeader="'新增书签'" />
   </div>
 </template>
 
@@ -28,8 +28,8 @@ defineOptions({
 import { computed, ref } from "vue";
 import type { TreeNode } from "primevue/treenode";
 import bookmarkCard from "./bookmark-card.vue";
-import type { Bookmark } from "@/types/nav/bookmark";
-import AddBookmark from "./add-bookmark.vue";
+import type { BookmarkSO } from "@/types/nav/bookmark";
+import BookmarkDialog from "./bookmark-dialog.vue";
 const selectedKey = ref();
 
 const nodes = computed(() => {
@@ -68,7 +68,7 @@ const userNodes = ref<TreeNode[]>([{
 
 
 
-const bookmarks = ref<Bookmark[]>([{
+const bookmarks = ref<BookmarkSO[]>([{
   id: 1,
   icon: "https://www.baidu.com/favicon.ico",
   title: "uni",
@@ -102,7 +102,7 @@ const bookmarks = ref<Bookmark[]>([{
 
 // 新增书签
 const addBookmarkVisible = ref(false)
-const userBookmarks = ref<Bookmark[]>([])
+const userBookmarks = ref<BookmarkSO[]>([])
 const addBookmark = () => {
   addBookmarkVisible.value = true
 }

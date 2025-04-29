@@ -5,7 +5,7 @@
 
     <!-- 标签信息 -->
     <a :href="bookmark.url" target="_blank" class=" h-20 flex items-center px-4 gap-4 ">
-      <img :src="bookmark.icon" alt="" class="size-10" />
+      <img :src="bookmark.iconUrl" alt="" class="size-10" />
       <div class="flex flex-col gap-1">
         <p class="font-semibold">{{ bookmark.title }}</p>
         <p class="text-xs text-(--p-text-muted-color)">这是一段注释</p>
@@ -41,21 +41,8 @@
 
 
     <!-- 编辑 -->
-    <Dialog v-model:visible="updateVisible" modal header="Edit Profile" :style="{ width: '25rem' }">
-      <span class="text-surface-500 dark:text-surface-400 block mb-8">Update your information.</span>
-      <div class="flex items-center gap-4 mb-4">
-        <label for="username" class="font-semibold w-24">Username</label>
-        <InputText id="username" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex items-center gap-4 mb-8">
-        <label for="email" class="font-semibold w-24">Email</label>
-        <InputText id="email" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex justify-end gap-2">
-        <Button type="button" label="Cancel" severity="secondary" @click="updateVisible = false"></Button>
-        <Button type="button" label="Save" @click="updateVisible = false"></Button>
-      </div>
-    </Dialog>
+    <BookmarkDialog v-model:bookmarkVisible="updateVisible" :props-bookmark-r-o="{ ...bookmark }"
+      :dialog-header="'编辑书签'" />
 
     <!-- 删除 -->
 
@@ -70,10 +57,10 @@ defineOptions({
   name: 'bookmark-card'
 })
 
-
-import type { Bookmark } from '@/types/nav/bookmark';
+import BookmarkDialog from "./bookmark-dialog.vue";
+import type { BookmarkSO } from '@/types/nav/bookmark';
 import { ref } from 'vue';
-defineProps<{ bookmark: Bookmark }>()
+defineProps<{ bookmark: BookmarkSO }>()
 
 
 // 编辑
